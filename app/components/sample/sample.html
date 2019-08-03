@@ -1,0 +1,36 @@
+<!-- Sample accordion 
+-->
+
+<div flex layout="row" layout-align="center none" ng-controller="SampleCtrl">
+    <div id="sampleform" flex flex-md="80" flex-lg="65" flex-xl="55" style="max-height:none;">
+        <div layout-padding layout-margin flex-xs="100">
+            <div class="form-inline md-form form-sm">
+                <span class="glyphicon glyphicon-search"></span>
+                <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search"
+                       mdbInputDirective>
+                <button ng-click="openRightSide()"><span class="glyphicon glyphicon-menu-hamburger"></span></button>
+            </div>
+            <br />
+            <v-accordion id="sampleSearchPane" class="vAccordion--default" control="sampleSearchPane"
+                         onexpand="expandCallback(index, id)" oncollapse="collapseCallback(index, id)">
+                <v-pane id="samplePane">
+                    <v-pane-header id="samplePane-header" aria-controls="samplePane-content">
+                        Select or edit Results
+                    </v-pane-header>
+                    <v-pane-content id="samplePane-content" aria-labelledby="samplePane-header">
+                        <cog-sample-grid></cog-sample-grid>
+                    </v-pane-content>
+                </v-pane>
+                <v-pane id="sampleTablePane"  ng-show="(if records exist)">
+                    <v-pane-header>
+                        Field List
+                    </v-pane-header>
+                    <v-pane-content>
+                        <cog-sample-grid></cog-sample-grid>
+                    </v-pane-content>
+                </v-pane>
+            </v-accordion>
+        </div>
+    </div>
+    <cog-sample-find></cog-sample-find>
+</div>
